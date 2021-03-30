@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: fritzgdockerdjangowebapplinux 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fritzgdockerdjangowebapplinux
+  template:
+    metadata:
+      labels:
+        app: fritzgdockerdjangowebapplinux 
+    spec:
+      containers:
+        - name: fritzgdockerdjangowebapplinux 
+          image: infoassetsregistry.azurecr.io/fritzgdockerdjangowebapplinux
+          ports:
+          - containerPort: 2222
