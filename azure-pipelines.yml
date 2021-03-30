@@ -30,5 +30,20 @@ stages:
           $(tag)
 
 
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    pool:
+      vmImage: 'ubuntu-latest'
+  
+    steps: 
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'info-assets(1)(b8c5adb6-7f2c-4b77-8ed2-7ba67c44ec64)'
+        appType: 'webAppContainer'
+        WebAppName: 'info-assets-app-test'
+        DockerNamespace: 'infoassetsregistry'
+        DockerRepository: 'appsvc-tutorial-custom-image'
 
 
